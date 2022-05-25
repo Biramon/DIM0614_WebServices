@@ -84,8 +84,7 @@ public class EstacionamentoController {
 		String vagas = "";
 		
 		for (int i = 1; i <= nEst; i++) {
-			vagas = vagas + "Vagas disponíveis no estacionamento " + estacionamentoRep.findById((long) i).get().getNome() + " (ID #" 
-					+ estacionamentoRep.findById((long) i).get().getId() + "): "
+			vagas = vagas + "Vagas disponíveis no estacionamento " + estacionamentoRep.findNomeById(i) + ": "
 					+ (estacionamentoRep.findnVagasTotaisById(i) - estacionamentoRep.findnVagasOcupadasById(i)) + "\n";
 		}
 		return vagas;
@@ -93,8 +92,8 @@ public class EstacionamentoController {
 	
 	
 	
-	/**
-	 * TO_DO Método que simule o estacionamento de um veículo, ou seja: ao ser invocado, o método altera 
+	/** --- TO_DO ---
+	 * Método que simule o estacionamento de um veículo, ou seja: ao ser invocado, o metodo altera 
 	 * a quantidade de vagas disponíveis
 	 * @param id
 	 * @return
@@ -103,6 +102,11 @@ public class EstacionamentoController {
 	public Estacionamento estacionar (@PathVariable("id") long id) {
 		
 	}
-	*/
 	
+	
+	@GetMapping("/estacionamento/saidas")
+	public List<String> saidasDisponiveis () {
+		return 
+	}
+	*/
 }

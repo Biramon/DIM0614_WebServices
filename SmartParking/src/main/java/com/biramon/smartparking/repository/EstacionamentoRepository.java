@@ -1,5 +1,6 @@
 package com.biramon.smartparking.repository;
 
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -15,4 +16,11 @@ public interface EstacionamentoRepository extends JpaRepository<Estacionamento, 
 	
 	@Query("SELECT e.nVagasOcupadas FROM Estacionamento e WHERE e.id = :id")
 	public int findnVagasOcupadasById (@Param("id") long id);
+	
+	@Query("SELECT e.nome FROM Estacionamento e WHERE e.id = :id")
+	public String findNomeById (@Param("id") long id);
+	
+	@Query("SELECT e.id FROM Estacionamento e WHERE e.id = :id")
+	public int findId ();
+	
 }
