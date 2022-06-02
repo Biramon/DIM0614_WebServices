@@ -23,4 +23,7 @@ public interface EstacionamentoRepository extends JpaRepository<Estacionamento, 
 	@Query("SELECT e.id FROM Estacionamento e WHERE e.id = :id")
 	public int findId ();
 	
+	@Query("SELECT e.id FROM Estacionamento e WHERE e.nome LIKE %:nome%")
+	public int findIdByNome (@Param("nome") String nome);
+	
 }

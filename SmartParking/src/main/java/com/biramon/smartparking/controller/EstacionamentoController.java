@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -17,7 +18,7 @@ import com.biramon.smartparking.model.Estacionamento;
 import com.biramon.smartparking.repository.EstacionamentoRepository;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/smartparking/api")
 public class EstacionamentoController {
 	
 	@Autowired
@@ -51,6 +52,16 @@ public class EstacionamentoController {
 	@GetMapping("/estacionamento/{id}")
 	public Optional<Estacionamento> listarEstacionamento (@PathVariable(value = "id") long id) {
 		return estacionamentoRep.findById(id);
+	}
+	
+	@GetMapping
+	public Optional<Estacionamento> listaREstacionamentoNome (@RequestParam String nome) {
+		
+		System.out.println(nome);
+		
+		long idE = estacionamentoRep.findIdByNome(nome);
+		
+		return estacionamentoRep.findById(idE);
 	}
 	
 	/**
@@ -100,13 +111,13 @@ public class EstacionamentoController {
 	 
 	@PatchMapping("/estacionar/{id}")
 	public Estacionamento estacionar (@PathVariable("id") long id) {
+	
 		
-	}
+	} 
 	
 	
 	@GetMapping("/estacionamento/saidas")
 	public List<String> saidasDisponiveis () {
-		return 
-	}
-	*/
+		return "";
+	}*/
 }
